@@ -1,17 +1,24 @@
-import Header from "./components/Header"
-import About from "./components/About"
-import Projects from "./components/Projects"
-import Footer from "./components/Footer"
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Navbar from "./components/layout/Navbar";
+import Home from "./pages/Home";
+import Projects from "./pages/Projects";
+import Certificates from "./pages/Certificates";
+import Login from "./pages/Login";
 
-export default function App() {
+function App() {
   return (
-    <div className="min-h-screen bg-gray-100 text-gray-800">
-      <Header />
-      <main className="max-w-4xl mx-auto px-4 py-8">
-        <About />
-        <Projects />
+    <BrowserRouter>
+      <Navbar />
+      <main className="p-6">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/projects" element={<Projects />} />
+          <Route path="/certificates" element={<Certificates />} />
+          <Route path="/login" element={<Login />} />
+        </Routes>
       </main>
-      <Footer />
-    </div>
-  )
+    </BrowserRouter>
+  );
 }
+
+export default App;
