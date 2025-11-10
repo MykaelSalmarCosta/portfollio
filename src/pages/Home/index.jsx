@@ -1,36 +1,10 @@
-import React from 'react';
-import './styles.css';
-
-const Home = () => {
+export default function Home() {
   return (
-    <div className="home-container">
-      <header className="hero-section">
-        <h1>Welcome to My Portfolio</h1>
-        <p>Frontend Developer & Web Designer</p>
-      </header>
-
-      <section className="about-section">
-        <h2>About Me</h2>
-        <p>
-          I'm a passionate developer focused on creating beautiful and functional web applications.
-        </p>
-      </section>
-
-      <section className="projects-section">
-        <h2>Featured Projects</h2>
-        <div className="projects-grid">
-          {/* Add your project cards here */}
-        </div>
-      </section>
-
-      <section className="contact-section">
-        <h2>Get In Touch</h2>
-        <div className="social-links">
-          {/* Add your social media links here */}
-        </div>
-      </section>
+    <div className="flex flex-col items-center justify-center h-screen bg-gray-100 text-gray-800">
+      <h1 className="text-4xl font-bold mb-4">🏗️ Página em Construção</h1>
+      <p className="text-lg text-gray-600">
+        Em breve você verá algo incrível aqui!
+      </p>
     </div>
   );
-};
-
-export default Home;
+}
