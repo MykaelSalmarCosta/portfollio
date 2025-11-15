@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getManhwas } from "../../api/mangadex";
+import { getManhwas } from "../api/mangadex";
 import ManhwaCard from "../components/ManhwaCard";
 
 export default function Home() {
