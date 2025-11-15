@@ -1,13 +1,14 @@
 const BASE_URL = "https://api.mangadex.org";
 
-export async function fetchRecentlyUpdatedManga(limit = 10) {
-  const response = await fetch(
-    `${BASE_URL}/manga?limit=${limit}&includes[]=cover_art&contentRating[]=safe&contentRating[]=safe`
+export async function getManhwas() {
+  try {
+    const response = await fetch(
+    `${BASE_URL}/manga?limit=20&includes[]=cover_art&contentRating[]=safe&contentRating[]=safe`
   );
 
   const data = await response.json();
 
-  const formatted = data.data.map(item => {
+  return data.data.map(item => {
     const id = item.id;
     const attributes = item.attributes;
 
@@ -26,6 +27,8 @@ export async function fetchRecentlyUpdatedManga(limit = 10) {
       cover: coverUrl,
     };
   });
-
-  return formatted;
+} catch (error) {
+    console.error("Erro ao buscar manhwas:", error);
+    return [];
+  }
 }
