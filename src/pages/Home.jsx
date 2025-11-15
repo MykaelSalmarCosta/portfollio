@@ -1,34 +1,21 @@
 import { useEffect, useState } from "react";
-import { getManhwas } from "../api/mangadex";
-import ManhwaCard from "../components/ManhwaCard";
+import MangaCard from "../components/MangaCard";
 
 export default function Home() {
-  const [manhwas, setManhwas] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [mangas, setMangas] = useState([]);
 
   useEffect(() => {
-    async function load() {
-      const data = await getManhwas(24);
-      setManhwas(data);
-      setLoading(false);
-    } 
-    load();
+    fetch("http://localhost:3000/mangadex/popular")
+      .then((res) => res.json())
+      .then((data) => setMangas(data.data))
+      .catch(console.error);
   }, []);
 
-  if (loading) {
-    return <p>Carregando manhwas...</p>;
-  }
-
   return (
-    <div className="home-page">
-      <h1 className="Title"> Catálago de Manhwa</h1>
-
-      <div className="manhwa-list">
-        {manhwas.map((m) => (
-          <ManhwaCard key={m.title} title={m.title} cover={m.cover} />
-        ))}
-      </div>
+    <div className="p-4 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
+      {mangas.map((manga) => (
+        <MangaCard key={manga.id} manga={manga} />
+      ))}
     </div>
   );
 }
-    

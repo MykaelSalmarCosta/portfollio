@@ -1,11 +1,15 @@
-export default function ManhwaCard({ title, cover}) {
+import { Link } from "react-router-dom";
+
+export default function MangaCard({ manga }) {
   return (
-    <div className="manhwa-card">
-      <img 
-      src={cover} 
-      alt={title} 
-      className="manhwa-cover" />
-      <h2 className="manhwa-title">{title}</h2>
-    </div>
+    <Link to={`/manga/${manga.id}`}>
+      <div className="bg-zinc-900 hover:bg-zinc-800 transition p-3 rounded-xl shadow cursor-pointer">
+        <p className="text-white text-sm font-medium line-clamp-2">
+          {manga.attributes?.title?.en ||
+            manga.attributes?.title?.pt ||
+            "Sem título"}
+        </p>
+      </div>
+    </Link>
   );
 }
